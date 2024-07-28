@@ -43,13 +43,14 @@ UI/yarn-error.log
 UI/testem.log
 UI/typings
 
+# node_modules and build files
+**/node_modules
+**/build
+**/package-lock.json
+
 # System Files
 .DS_Store
 Thumbs.db
-
-# Server files
-Server/node_modules
-Server/build
 
 # Server Testing
 Server/test.http
