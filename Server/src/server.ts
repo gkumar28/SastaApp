@@ -1,19 +1,16 @@
 import { fastify } from 'fastify';
-import userPlugin from './routes/user';
-import chatPlugin from './routes/chat';
-import socketPlugin from './routes/socket';
-import sessionPlugin from './routes/session';
+import userPlugin from './service/userService';
+import chatPlugin from './service/chatService';
+import socketPlugin from './service/messageService';
+
 const PORT = process.env.PORT || 8000;
-export const server = fastify({  //TODO export connection -> models -> routes
+
+const server = fastify({  //TODO export connection -> models -> routes
     logger: true,
 });
 
-server.register(sessionPlugin, {
-    prefix: '/api/session'
-})
-
 server.register(userPlugin, {
-    prefix: '/api/users'
+    prefix: '/api/user'
 });
 
 server.register(chatPlugin, {
@@ -21,12 +18,13 @@ server.register(chatPlugin, {
 })
 
 server.register(socketPlugin, {
-    prefix: '/api/messages'
+    prefix: '/api/message'
 })
 
 async function start(): Promise<void> {
     try {
         await server.listen(PORT);
+        server.log.info(`server listening on ${PORT}`)
     }
     catch(err) {
         server.log.error(err);
