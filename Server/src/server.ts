@@ -1,6 +1,6 @@
 import { fastify } from 'fastify';
 import userPlugin from './service/userService';
-import chatPlugin from './service/chatService';
+import chatPlugin from './controller/chatRoomController';
 import socketPlugin from './service/messageService';
 
 const PORT = process.env.PORT || 8000;

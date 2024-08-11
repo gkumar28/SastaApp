@@ -1,19 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
-import { Getters, required, Setters } from "../util/classUtil"
+import { Entity, Column } from "typeorm"
+import { Getters, Setters } from "../util/classUtil"
+import BaseEntity from "./baseEntity"
 
 @Entity()
 @Getters()
 @Setters()
-export class User {
-
-    @PrimaryGeneratedColumn("uuid", { name: "id" })
-    id?:string
+export class User extends BaseEntity {
 
     @Column()
-    FirstName?: string
+    firstName?: string
     
     @Column({ nullable: true})
-    LastName?: string
+    lastName?: string
 
     @Column()
     username?: string

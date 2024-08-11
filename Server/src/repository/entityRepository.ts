@@ -12,14 +12,24 @@ export class EntityRepository<T extends BaseEntity> extends Repository<T> {
     }
 
     async findById(value: string): Promise<T|null> {
-        if (value === undefined || value === null) {
-            throw "value cannot be null"    
+        if (value == null) {
+            throw "id cannot be null"    
         }
 
         return await this.repository.findOne({
             where: {
                 id: value
             } as unknown as FindOptionsWhere<T>
+        })
+    }
+
+    async findAllBy(_args: object): Promise<T[]> {
+        if (_args == null) {
+            throw "Invalid data supplied"
+        }
+
+        return await this.repository.find({
+            where: _args
         })
     }
 }
