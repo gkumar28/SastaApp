@@ -4,8 +4,15 @@ export interface IChatRoomRouteRequest extends IApiRequest {
     name?: string
 }
 
+export interface IUserRouteRequest extends IApiRequest {
+    userId?: string
+    firstName?: string
+    lastName?: string
+    username?: string
+    email?: string
+    password?: string
+}
 
-
-export interface IApiRequest {
+export interface IApiRequestBody {
     ip?: string
 }

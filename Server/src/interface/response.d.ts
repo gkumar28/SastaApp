@@ -5,7 +5,6 @@ export interface IChatRoomRouteResponse extends IApiResponse {
 
 
 export interface IApiResponse {
-    response?: string
-    succeess?: boolean
+    response?: number
     errors?: any
 }
