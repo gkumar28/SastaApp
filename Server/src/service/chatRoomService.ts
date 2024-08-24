@@ -22,16 +22,16 @@ export class ChatRoomService {
             return chatRoom
         }
 
-        return this.saveChatRoom(request)
+        return await this.saveChatRoom(request)
     }
 
     async getChatRoom(request: IChatRoomRouteRequest): Promise<ChatRoom|null> {
         const { chatRoomId } = request
 
         if (chatRoomId != null) {
-            return this.chatRoomRepository.findById(chatRoomId)
+            return await this.chatRoomRepository.findById(chatRoomId)
         } else {
-            return this.chatRoomRepository.findOneBy(request)
+            return await this.chatRoomRepository.findOneBy(request)
         }   
     }
 
@@ -48,7 +48,7 @@ export class ChatRoomService {
 
         let users: User[] = await this.userRepository.findAllByIdIn(userIds)
 
-        return this.chatRoomRepository.save({
+        return await this.chatRoomRepository.save({
             name: name,
             users: users
         })
